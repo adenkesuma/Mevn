@@ -42,7 +42,7 @@ export const deleteUser = async (req, res) => {
     }
   } catch (err) {
     res.status(500).json({
-      erro: 'Gagal menghapus user'
+      err: 'Gagal menghapus user'
     })
   }
 };

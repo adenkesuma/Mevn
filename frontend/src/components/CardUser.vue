@@ -8,10 +8,10 @@ export default {
     };
   },
   created() {
-    this.fetchProduct();
+    this.fetchUser();
   },
   methods: {
-    async fetchProduct() {
+    async fetchUser() {
       try {
         const response = await axios.get('http://localhost:3000/users');
         console.log(response.data)
@@ -20,15 +20,26 @@ export default {
         console.error('Error fetching data from API', error);
       }
     },
+    async deleteUser(userId) {
+      try {
+        const response = await axios.delete(`http://localhost:3000/users/delete/${userId}`);
+        console.log('User deleted:', response.data);
+
+        this.fetchUser();
+      } catch (error) {
+        console.error('Error deleting user', error);
+      }
+    },
   },
 };
 </script>
 
 <template>
   <div class="cards">
-    <div v-for="(product, index) in apiData" :key="index" class="card">
-      <h4>Nama: {{ product.nama }}</h4>
-      <p>password: {{ product.password }}</p>
+    <div v-for="(user, index) in apiData" :key="index" class="card">
+      <h4>Nama: {{ user.nama }}</h4>
+      <p>password: {{ user.password }}</p>
+      <button class="button" @click="deleteUser(user._id)">Delete User</button>
     </div>
   </div>
 </template>
@@ -55,5 +66,15 @@ h4 {
 
 p {
   font-size: 14px;
+}
+
+.button {
+  margin-top: 10px;
+  background-color: rgb(219, 0, 0);
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
 }
 </style>
