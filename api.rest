@@ -1,0 +1,15 @@
+GET http://localhost:3000/users
+
+###
+
+POST http://localhost:3000/users/tambah
+Content-Type: application/json
+
+{
+  "nama": "darmin",
+  "password": "kwuissuemeh"
+}
+
+
+###
+DELETE http://localhost:3000/users/delete/657ed86ac95b4d09c23952ba

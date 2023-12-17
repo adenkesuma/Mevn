@@ -1,0 +1,10 @@
+@import './base.css';
+
+a,
+.green {
+  text-decoration: none;
+  color: #00bd7e;
+  transition: 0.4s;
+  padding: 3px;
+}
+
